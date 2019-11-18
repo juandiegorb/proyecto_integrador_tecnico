@@ -25,32 +25,20 @@
    <?php 
    //Valida si un tipo de usuario inicio la sesion
     if(isset($_SESSION['tipousuario'])){
-        if($_SESSION['tipousuario'] == 3){ //Sesion como medico
+        if($_SESSION['tipousuario'] == 3 || $_SESSION['tipousuario'] == 2){ //Sesion como medico
             ?>
      <!--footer-->
   <footer id="footer">
     <div class="top-footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 col-sm-6 marb20">
+          <div class="col-md-12 col-sm-12 marb20">
             <div class="ftr-tle" align="center">
-              <h4 class="white no-padding">Acerca de nosotros</h4>
-            </div>
-            <div class="info-sec">
-              <p>Praesent convallis tortor et enim laoreet, vel consectetur purus latoque penatibus et dis parturient.</p>
+              <h4 class="white no-padding">Control de seguridad por reconocimiento facial, registra el horario de entrada y el horario de salida</h4>
             </div>
           </div>
           <div class="col-md-6 col-sm-6 marb20">
-            <div class="ftr-tle"  align="center">
-              <h4 class="white no-padding">Gu&iacute;a r&aacute;pida</h4>
             </div>
-            <div class="info-sec">
-              <ul class="quick-info">
-                <li><a href="index.php"><i class="fa fa-circle"></i>Inicio</a></li>
-                <li><a href="servicios.php"><i class="fa fa-circle"></i>Servicios</a></li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -58,56 +46,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            © Copyright Cl&iacute;nica Cotecnova. Todos los derechos reservados.
-            <div class="credits">
-              <!--
-                All the links in the footer should remain intact.
-                You can delete the links only if you purchased the pro version.
-                Licensing information: https://bootstrapmade.com/license/
-                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medilab
-              -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!--/ footer-->
-            <?php
-        }else if($_SESSION['tipousuario'] == 2){ //Sesion como usuario
-            ?>            
-  <!--footer-->
-  <footer id="footer">
-    <div class="top-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-sm-6 marb20">
-            <div class="ftr-tle" align="center">
-              <h4 class="white no-padding">Servicio Online</h4>
-            </div>
-            <div class="info-sec">
-              <p>¡Conoce acerca de todos los servicios a los cuales puedes acceder y se beneficiado!</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-6 marb20">
-            <div class="ftr-tle"  align="center">
-              <h4 class="white no-padding">Gu&iacute;a r&aacute;pida</h4>
-            </div>
-            <div class="info-sec">
-              <ul class="quick-info">
-                <li><a href="index.php"><i class="fa fa-circle"></i>Inicio</a></li>
-                <li><a href="ver_citaU.php"><i class="fa fa-circle"></i>Citas</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-line">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            © Copyright Cl&iacute;nica Cotecnova. Todos los derechos reservados.
+            © Copyright seguridad inmotoca Cotecnova. Todos los derechos reservados.
             <div class="credits">
               <!--
                 All the links in the footer should remain intact.

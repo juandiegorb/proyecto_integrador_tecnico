@@ -43,7 +43,7 @@
                         </div>
                         <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                           <ul class="nav navbar-nav">
-                            <li class=""><a href="menu.php">Inicio</a></li>
+                            <li class=""><a href="menu.php">Inicio</a></li>                            
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
                                 <div class="dropdown-menu " aria-labelledby="dropdown1">

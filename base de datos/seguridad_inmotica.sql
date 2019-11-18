@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2019 a las 21:00:54
+-- Tiempo de generación: 18-11-2019 a las 23:09:00
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -33,6 +33,14 @@ CREATE TABLE `estado` (
   `nombre` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `estado`
+--
+
+INSERT INTO `estado` (`id_estado`, `nombre`) VALUES
+(1, 'Activo'),
+(2, 'Inactivo');
+
 -- --------------------------------------------------------
 
 --
@@ -57,6 +65,15 @@ CREATE TABLE `tipo_cedula` (
   `nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tipo_cedula`
+--
+
+INSERT INTO `tipo_cedula` (`id_tipo_cedula`, `nombre`) VALUES
+(1, 'Cedula de ciudadania'),
+(2, 'Tarjeta de identidad'),
+(3, 'Cedula extranjera');
+
 -- --------------------------------------------------------
 
 --
@@ -67,6 +84,15 @@ CREATE TABLE `tipo_usuario` (
   `id_tipo_usuario` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `nombre`) VALUES
+(1, 'Visitante'),
+(2, 'Empleado'),
+(3, 'Administrador');
 
 -- --------------------------------------------------------
 
@@ -80,12 +106,22 @@ CREATE TABLE `usuario` (
   `numero_cedula` varchar(45) DEFAULT NULL,
   `nombre_completo` varchar(100) DEFAULT NULL,
   `apellido` varchar(45) DEFAULT NULL,
-  `administradorcol` varchar(100) DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
   `tipo_usuario_id` int(11) NOT NULL,
   `estado_id` int(11) NOT NULL,
-  `foto` blob DEFAULT NULL
+  `foto` blob DEFAULT NULL,
+  `contrasena` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `tipo_cedula_id`, `numero_cedula`, `nombre_completo`, `apellido`, `telefono`, `tipo_usuario_id`, `estado_id`, `foto`, `contrasena`) VALUES
+(1, 1, '1112793168', 'Juan Diego', 'Rios Ballesteros', '3046812146', 3, 1, NULL, '202cb962ac59075b964b07152d234b70'),
+(2, 1, '1', 'Empleado', '1', '3046812146', 2, 1, NULL, '202cb962ac59075b964b07152d234b70'),
+(3, 3, '2', 'hola', '1', '325', 2, 1, NULL, '202cb962ac59075b964b07152d234b70'),
+(4, 1, '123', 'Juan Diego ', 'Administrador', '36232', 3, 1, NULL, '202cb962ac59075b964b07152d234b70');
 
 --
 -- Índices para tablas volcadas
@@ -134,7 +170,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
@@ -146,19 +182,19 @@ ALTER TABLE `registro`
 -- AUTO_INCREMENT de la tabla `tipo_cedula`
 --
 ALTER TABLE `tipo_cedula`
-  MODIFY `id_tipo_cedula` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_cedula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
