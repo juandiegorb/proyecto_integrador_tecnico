@@ -17,8 +17,7 @@
     <div class="col-lg-offset-3 col-lg-6">
 <?php
 //condicion para comprobar si los campos están declarados anteriormente y si no estan vacíos
-if(isset($_GET['id']) && !empty($_GET['id'])){
-    
+if(isset($_GET['id']) && !empty($_GET['id'])){    
     //lamado al archivo MySQL
     require_once '../Modelo/MySQL.php';
     
@@ -29,25 +28,25 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     //llamado a funcion conectar
     $mysql->conectar();
     //variable que ejecutara la funcion consulta, pero en este caso, sera un eliminar usuario actualizando su estado 1. Activo 2.Inactivo
-    $ActualizarEstado = $mysql->efectuarConsulta("update usuarios set estado = 0 where id_usuario =".$idUsuario.""); 
+    $ActualizarEstado = $mysql->efectuarConsulta("update seguridad_inmotica.usuario set seguridad_inmotica.usuario.estado_id = 2 where seguridad_inmotica.usuario.id_usuario =".$idUsuario.""); 
     //Desconecto la conexion de la bD
     $mysql->desconectar();
     //decision para comprobar si se ejecuto, se redirige al index principal
     if($ActualizarEstado){
       //impresion de mensaje personalizado
-       echo "<div class=\"alert alert-success alert-dismissible\"><a href=\"../ver_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Felicidades!</strong>El paciente ha sido inhabilitado correctamente.</div>";
+       echo "<div class=\"alert alert-success alert-dismissible\"><a href=\"../ver_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Felicidades!</strong>El usuario ha sido inhabilitado correctamente.</div>";
        //redireccion
        header( "refresh:3;url=../ver_usuario.php" ); 
     }else{
         //mensaje de error personalizado
-        echo "<div class=\"alert alert-warning alert-dismissible\"><a href=\"../ver_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Alerta!</strong>No se ha podido inhabilitar al paciente.</div>";
+        echo "<div class=\"alert alert-warning alert-dismissible\"><a href=\"../ver_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Alerta!</strong>No se ha podido inhabilitar al usuario.</div>";
         //redireccion
         header( "refresh:3;url=../ver_usuario_inactivo.php" ); 
     }
     
 }else{
   //impresion de mensaje personalizado
-    echo "<div class=\"alert alert-warning alert-dismissible\"><a href=\"../ver_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Alerta!</strong>No se han enviado el ID del paciente.</div>";
+    echo "<div class=\"alert alert-warning alert-dismissible\"><a href=\"../ver_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Alerta!</strong>No se han enviado el ID del usuario.</div>";
     //redireccion
     header( "refresh:3;url=../ver_usuario.php" ); 
 }

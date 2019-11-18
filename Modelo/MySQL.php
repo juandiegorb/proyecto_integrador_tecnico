@@ -8,8 +8,7 @@ class MySQL{
     private $user = "root";
     private $password = "";
     private $puerto = "3306";
-    private $database = "clinica_cotecnova";
-    
+    private $database = "seguridad_inmotica";    
     private $conexion;
     
     // Metodo para conectar a la base de datos

@@ -18,8 +18,8 @@
 <?php
 //condicion para comprobar si los campos están declarados anteriormente y si no estan vacíos
 if(isset($_POST['enviar']) && !empty($_POST['tipoDocumento']) && !empty($_POST['numeroDocumento']) && 
-        !empty($_POST['nombreCompleto']) &&!empty($_POST['apellidos']) && !empty($_POST['estadoCivil']) && !empty($_POST['departamentoNacimiento']) 
-        && !empty($_POST['ciudadNacimiento']) && !empty($_POST['contrasena'])){
+        !empty($_POST['nombreCompleto']) &&!empty($_POST['apellidos']) && !empty($_POST['telefono']) && !empty($_POST['tipoUsuario']) 
+        && !empty($_POST['contrasena'])){
     
     //lamado al archivo MySQL
     require_once '../Modelo/MySQL.php';
@@ -29,17 +29,15 @@ if(isset($_POST['enviar']) && !empty($_POST['tipoDocumento']) && !empty($_POST['
     $numeroDocumento = $_POST['numeroDocumento'];
     $nombreCompleto = $_POST['nombreCompleto'];
     $apellidos = $_POST['apellidos'];
-    $estadoCivil = $_POST['estadoCivil'];
-    $departamentoNacimiento = $_POST['departamentoNacimiento'];
-    $CiudadNacimiento = $_POST['ciudadNacimiento'];
+    $telefono = $_POST['telefono'];
+    $tipoUsuario = $_POST['tipoUsuario'];
     $contrasena = md5($_POST['contrasena']);
     //nueva "archivo" MySQL
     $mysql = new MySQL;
     //llamado a funcion conectar
-    $mysql->conectar();
-    
+    $mysql->conectar();    
     //consulta donde se hace el llamado del numero de documento
-    $repetido = $mysql->efectuarConsulta("select numero_documento from clinica_cotecnova.usuarios where numero_documento = ".$numeroDocumento.""); 
+    $repetido = $mysql->efectuarConsulta("select seguridad_inmotica.usuario.numero_cedula from seguridad_inmotica.usuario where seguridad_inmotica.usuario.numero_cedula = ".$numeroDocumento.""); 
     //condicion que comprueba si hay algun dato en la consulta
     if(mysqli_num_rows($repetido) > 0){
         //Desconecto la conexion de la bD
@@ -50,18 +48,18 @@ if(isset($_POST['enviar']) && !empty($_POST['tipoDocumento']) && !empty($_POST['
         header( "refresh:3;url=../crear_usuario.php" ); 
     }else{
         //variable que ejecutara la funcion consulta, pero en este caso, no usamos select sino insert para meter los datos a la respectiva table
-        $insertarUsuarioi = $mysql->efectuarConsulta("insert into clinica_cotecnova.usuarios(tipo_Usuario_id, numero_documento, nombre_completo, apellidos, contrasena, tipo_documento_id, estado_civil_id, ciudad_id, departamento_id, estado) VALUES(2, '".$numeroDocumento."','".$nombreCompleto."','".$apellidos."','".$contrasena."',".$tipoDocumento.",".$estadoCivil.",".$CiudadNacimiento.",".$departamentoNacimiento.", 1 )"); 
+        $insertarUsuarioi = $mysql->efectuarConsulta("insert into seguridad_inmotica.usuario(tipo_cedula_id, numero_cedula, nombre_completo, apellido, telefono, tipo_usuario_id, estado_id, contrasena) VALUES(".$tipoDocumento.",'".$numeroDocumento."','".$nombreCompleto."','".$apellidos."','".$telefono."',".$tipoUsuario.",1,'".$contrasena."')"); 
         //Desconecto la conexion de la bD
         $mysql->desconectar();
         //decision para comprobar si se ejecuto, se redirige al index principal
         if($insertarUsuarioi){
           //impresion de mensajes personalizados
-           echo "<div class=\"alert alert-success alert-dismissible\"><a href=\"../ver_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Felicidades!</strong>El paciente ha sido registrado correctamente.</div>";
+           echo "<div class=\"alert alert-success alert-dismissible\"><a href=\"../ver_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Felicidades!</strong> El usuario ha sido registrado correctamente.</div>";
            //redireccion
            header( "refresh:3;url=../ver_usuario.php" );    
         } else {
             //mensaje de error personalizado
-           echo "<div class=\"alert alert-warning alert-dismissible\"><a href=\"../crear_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Alerta!</strong>No se ha podido registrar al paciente.</div>";
+           echo "<div class=\"alert alert-warning alert-dismissible\"><a href=\"../crear_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Alerta!</strong> No se ha podido registrar al usuario.</div>";
            //redireccion
            header( "refresh:3;url=../crear_usuario.php" );          
         }
@@ -69,7 +67,7 @@ if(isset($_POST['enviar']) && !empty($_POST['tipoDocumento']) && !empty($_POST['
 }else{
     //sino se cumple la primer condicion, se re envia nuevamente al formulario
   //mensaje personalizado
-    echo "<div class=\"alert alert-warning alert-dismissible\"><a href=\"../crear_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Alerta!</strong>No se han enviado todos los datos necesarios.</div>";
+    echo "<div class=\"alert alert-warning alert-dismissible\"><a href=\"../crear_usuario.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>Alerta!</strong> No se han enviado todos los datos necesarios.</div>";
     //redireccion
     header( "refresh:3;url=../crear_usuario.php" );          
 }

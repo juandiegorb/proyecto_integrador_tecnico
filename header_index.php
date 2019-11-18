@@ -25,7 +25,7 @@
     <?php 
     //Valida si un tipo de usuario inicio la sesion
     if(isset($_SESSION['tipousuario'])){
-        if($_SESSION['tipousuario'] == 1){ //Sesion como medico
+        if($_SESSION['tipousuario'] == 3){ //Sesion como medico
             ?>
                 <!--banner-->
               <section id="banner2" class="banner">
@@ -38,46 +38,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                          </button>
-                          <a class="navbar-brand" href="index.php"><img src="img/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
+                          </button>                          
                         </div>
                         <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                           <ul class="nav navbar-nav">
-                            <li class=""><a href="index.php">Inicio</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cita</a>
-                                <div class="dropdown-menu " aria-labelledby="dropdown1">
-                                  <a class="dropdown-item btn" href="crear_cita.php">Crear cita</a>
-                                  <a class="dropdown-item btn" href="ver_cita.php">Ver citas activas</a>
-                                  <a class="dropdown-item btn" href="historial_cita.php">Ver historial de citas</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Medico</a>
-                                <div class="dropdown-menu " aria-labelledby="dropdown1">
-                                  <a class="dropdown-item btn" href="crear_medicos.php">Crear medico</a>
-                                  <a class="dropdown-item btn" href="ver_medico.php">Ver medicos</a>
-                                  <a class="dropdown-item btn" href="ver_medico_inactivo.php">Ver medicos inactivos</a>
-                                </div>
-                            </li>
+                            <li class=""><a href="menu.php">Inicio</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
                                 <div class="dropdown-menu " aria-labelledby="dropdown1">
                                   <a class="dropdown-item btn" href="crear_usuario.php">Crear usuario</a>
-                                  <a class="dropdown-item btn" href="ver_usuario.php">Ver usuarios</a>
-                                  <a class="dropdown-item btn" href="ver_usuario_inactivo.php">Ver usuarios inactivos</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reportes</a>
-                                <div class="dropdown-menu " aria-labelledby="dropdown1">
-                                  <a class="dropdown-item btn" href="reportes.php">Generar reportes</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Backup</a>
-                                <div class="dropdown-menu " aria-labelledby="dropdown1">
-                                  <a class="dropdown-item btn" href="Controlador\backup.php">Crear backup</a>
+                                  <a class="dropdown-item btn" href="ver_usuario.php">Ver usuario</a>
+                                  <a class="dropdown-item btn" href="ver_usuario_inactivo.php">Ver usuario inactivo</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -97,28 +68,28 @@
             <?php
         }else if($_SESSION['tipousuario'] == 2){ //sesion como usuario
             ?>
-              <!--banner-->
-            <section id="banner2" class="banner">
+                <!--banner-->
+              <section id="banner2" class="banner">
                 <div class="bg-color2">
                   <nav class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
                       <div class="col-md-12">
-                      <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                                  <span class="icon-bar"></span>
-                                                  <span class="icon-bar"></span>
-                                                  <span class="icon-bar"></span>
-                                                </button>
-                        <a class="navbar-brand" href="index.php"><img src="img/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
-                      </div>
-                      <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-                        <ul class="nav navbar-nav">
-                            <li class=""><a href="index.php">Inicio</a></li>
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>                          
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                          <ul class="nav navbar-nav">
+                            <li class=""><a href="menu.php">Inicio</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cita</a>
+                                <a class="nav-link dropdown-toggle" href="" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
                                 <div class="dropdown-menu " aria-labelledby="dropdown1">
-                                  <a class="dropdown-item btn" href="ver_cita.php">Ver citas activas</a>
-                                  <a class="dropdown-item btn" href="historial_cita.php">Ver historial de citas</a>
+                                  <a class="dropdown-item btn" href="crear_usuario.php">Crear usuario</a>
+                                  <a class="dropdown-item btn" href="ver_usuario.php">Ver usuario</a>
+                                  <a class="dropdown-item btn" href="ver_usuario_inactivo.php">Ver usuario inactivo</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -127,47 +98,16 @@
                                   <a class="dropdown-item btn" href="Controlador\cerrar_sesion.php">Cerrar sesion</a>
                                 </div>
                             </li>
-                        </ul>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </nav>                
-              </div>
-            </section>
-            <!--/ banner-->
+                  </nav>
+                </div>
+              </section>
+              <!--/ banner-->
             <?php
         }           
-    }else{
-        ?>
-        <!--banner-->
-        <section id="banner2" class="banner">
-          <div class="bg-color2">
-            <nav class="navbar navbar-default navbar-fixed-top">
-              <div class="container">
-                <div class="col-md-12">
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.php"><img src="img/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
-                  </div>
-                  <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                      <li class=""><a href="index.php">Inicio</a></li>
-                      <li class=""><a href="servicios.php">Servicios</a></li>
-                      <li class=""><a href="about.php">Acerca de nosotros</a></li>
-                      <li class=""><a href="login.php">Iniciar sesi&oacute;n</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </nav>
-          </div>
-        </section>
-        <!--/ banner-->
-    <?php
     }
     ?>
   <!-- Llamado de los respectivos scripts -->

@@ -1,45 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cl&iacute;nica Cotecnova</title>
-  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-  <!-- llamado de css -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!-- =======================================================
-    Theme Name: Medilab
-    Theme URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Llamado de css -->
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/style2.css">
+<!--===============================================================================================-->
 </head>
+<body>	
+    <?php 
+    session_start();
+    if(!isset($_SESSION['tipousuario'])){
+            //llamado del archivo mysql
+            require_once 'Modelo/MySQL.php';
+            //creacion de nueva "consulta"
+            $mysql = new MySQL;
+            //se conecta a la base de datos
+            $mysql->conectar();             
+            //se desconecta de la base de datos
+            $mysql->desconectar();    
+            ?>
+            <!-- Creacion de divs, spans, inputs, form, entre otros -->
+            <div class="limiter">
+                <div class="container-login100">
+                    <div class="login100-more" style="background-image: url('img/camara.jpg');"></div>
+                    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+                        <!-- Creacion de formulario el cual va redirigido a loginvalidacion mediante el metodo post -->
+                        <form class="login100-form validate-form" action="Controlador/loginvalidacion.php" method="post">
+                            <span class="login100-form-title p-b-59">Login</span>					
+                            <div class="wrap-input100 validate-input" >
+                                <span class="label-input100">Identificacion</span>
+                                <input class="input100" type="text" name="Identificacion" placeholder="Identificacion..." required="">
+                                <span class="focus-input100"></span>
+                            </div>
+                            <div class="wrap-input100 validate-input" >
+                                <span class="label-input100">Contraseña</span>
+                                <input class="input100" type="password" name="pass" placeholder="Contraseña" required>
+                                <span class="focus-input100"></span>
+                            </div>
+                            <div class="container-login100-form-btn">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+                                    <!-- creacion de boton -->
+                                    <button class="login100-form-btn" >Ingresar</button>
+                                </div>
+                            </div>
+                            <div class="container-login100-form-btn" style="padding-top: 10px;">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+                                    <!-- boton que va redirigido al index -->
+                                    <a href="index.php" class="login100-form-btn">Cancelar</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>        
+    <?php
+    }else{
+         header( "refresh:0;url=menu.php" );    
+    }
+    ?>
+<!--===============================================================================================-->
+<!-- llamado de respectivos scripts -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-    <!--banner-->
-    <!-- llamado de plantillas header y footer -->
-    <div id="container">
-    <?php
-        include("header.php");
-    ?>
-    </div>  
-    <!--footer-->
-    <div id="footer">
-    <?php
-        include("footer.php");
-    ?>
-    </div>
-    <!--/ footer-->
-    <!-- respectivos llamados de scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="contactform/contactform.js"></script>
 </body>
 </html>
