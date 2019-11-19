@@ -114,7 +114,7 @@
             header( "refresh:0;url=index.php" );  
         }
     }else{
-        header( "refresh:0;url=login.php" );    
+        header( "refresh:0;url=index.php" );    
     }
     ?>
   <script src="js/jquery-3.4.1.min.js"></script>

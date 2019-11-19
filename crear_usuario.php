@@ -291,7 +291,7 @@
     include("footer.php");    
         }
     }else{
-        header( "refresh:0;url=login.php" );    
+        header( "refresh:0;url=index.php" );    
     }
     ?>
     <!-- Llamado de los respectivos scripts -->
